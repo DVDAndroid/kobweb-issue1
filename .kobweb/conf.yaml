@@ -1,0 +1,14 @@
+site:
+  title: "Empty2"
+
+server:
+  files:
+    dev:
+      contentRoot: "build/processedResources/js/main/public"
+      script: "build/js/packages/empty2/kotlin/empty2.js"
+      api: "build/libs/empty2.jar"
+    prod:
+      script: "build/distributions/empty2.js"
+      siteRoot: ".kobweb/site"
+
+  port: 8080
