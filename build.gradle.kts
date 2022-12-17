@@ -1,10 +1,10 @@
-import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
+//import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.jetbrains.compose)
-    alias(libs.plugins.kobweb.application)
-    alias(libs.plugins.kobwebx.markdown)
+   // alias(libs.plugins.kobweb.application)
+//  /   alias(libs.plugins.kobwebx.markdown)
 }
 
 repositories {
@@ -17,16 +17,22 @@ repositories {
 group = "org.example.empty2"
 version = "1.0-SNAPSHOT"
 
+/*
 kobweb {
     app {
         index {
             description.set("Powered by Kobweb")
         }
     }
-}
+}*/
 
 kotlin {
-    configAsKobwebApplication("empty2", includeServer = true)
+    //configAsKobwebApplication("empty2", includeServer = true)
+js(IR){
+    browser()
+    binaries.executable()
+}
+
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions.jvmTarget = "11"
     }
@@ -48,10 +54,10 @@ kotlin {
                 implementation(libs.kobwebx.markdown)
              }
         }
-        val jvmMain by getting {
+        /*val jvmMain by getting {
             dependencies {
                 implementation(libs.kobweb.api)
              }
-        }
+        }*/
     }
 }
