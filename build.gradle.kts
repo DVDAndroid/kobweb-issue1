@@ -35,6 +35,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(compose.runtime)
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
             }
         }
 
