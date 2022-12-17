@@ -10,4 +10,5 @@ fun HomePage() {
     // TODO: Add content here
     val kotlinReleaseDateTime = LocalDateTime(2016, 2, 15, 16, 57, 0, 0)
     println(kotlinReleaseDateTime.toString())
+    println("ok")
 }
