@@ -1,14 +1,17 @@
 package org.example.empty2.pages
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import com.varabyte.kobweb.core.Page
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.Clock
+import org.jetbrains.compose.web.dom.Div
+import org.jetbrains.compose.web.dom.Text
 
 @Page
 @Composable
 fun HomePage() {
-    // TODO: Add content here
-    val kotlinReleaseDateTime = LocalDateTime(2016, 2, 15, 16, 57, 0, 0)
-    println(kotlinReleaseDateTime.toString())
-    println("ok")
+    val kotlinReleaseDateTime = Clock.System.now()
+
+    Div {
+        Text(kotlinReleaseDateTime.toString())
+    }
 }
