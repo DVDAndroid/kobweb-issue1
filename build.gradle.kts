@@ -40,6 +40,7 @@ kotlin {
         }
 
         val jsMain by getting {
+            resources.srcDir("build/generated/kobweb/src/jsMain/resources/public")
             dependencies {
                 implementation(compose.web.core)
                 implementation(libs.kobweb.core)
@@ -48,12 +49,37 @@ kotlin {
                 implementation(libs.kobwebx.markdown)
                 // https://github.com/Kotlin/kotlinx-datetime/blob/0f4c62d32d87b35d8af54b408ed8685d0ddfd18a/core/build.gradle.kts#L184
                 implementation(npm("@js-joda/core", "3.2.0"))
-             }
+            }
         }
         val jvmMain by getting {
             dependencies {
                 implementation(libs.kobweb.api)
-             }
+            }
         }
+    }
+}
+
+
+tasks {
+    val kobwebPatch = create("kobwebPatch") {
+        inputs.file("build/generated/kobweb/src/jsMain/kotlin/main.kt")
+
+        doLast {
+            ant.withGroovyBuilder {
+                "replaceregexp"(
+                        "match" to "public fun main\\(\\): Unit \\{",
+                        "replace" to "public fun KobwebMain\\(\\): Unit \\{",
+                        "flags" to "g",
+                        "byline" to "true",
+                ) {
+                    "fileset"("dir" to "build/generated/kobweb/src/jsMain/kotlin") {
+                        "include"("name" to "main.kt")
+                    }
+                }
+            }
+        }
+    }
+    named("kobwebGenSiteEntry") {
+        finalizedBy(kobwebPatch)
     }
 }
