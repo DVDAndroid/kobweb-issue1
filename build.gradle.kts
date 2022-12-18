@@ -60,8 +60,8 @@ kotlin {
                 implementation(libs.kobweb.silk.core)
                 implementation(libs.kobweb.silk.icons.fa)
                 implementation(libs.kobwebx.markdown)
-                // https://github.com/Kotlin/kotlinx-datetime/blob/0f4c62d32d87b35d8af54b408ed8685d0ddfd18a/core/build.gradle.kts#L184
-                implementation(npm("@js-joda/core", "3.2.0"))
+//                // https://github.com/Kotlin/kotlinx-datetime/blob/0f4c62d32d87b35d8af54b408ed8685d0ddfd18a/core/build.gradle.kts#L184
+//                implementation(npm("@js-joda/core", "3.2.0"))
             }
         }
 //        val jvmMain by getting {
